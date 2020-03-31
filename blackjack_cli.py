@@ -79,6 +79,12 @@ class Game:
     def __init__(self):
         playing = True
         
+        print('#############################')
+        print('### Blackjack CLI game')
+        print('#############################')
+        print()
+        print('Welcome to the famous Blackjack game!')
+        
         while playing:
             self.deck = Deck()
             self.deck.shuffle()
@@ -90,6 +96,7 @@ class Game:
                 self.player_hand.add_card(self.deck.deal())
                 self.dealer_hand.add_card(self.deck.deal())
             
+            print()
             print("Your hand is: ")
             self.player_hand.display()
             print()
@@ -117,10 +124,12 @@ class Game:
                 else:
                     player_hand_value = self.player_hand.get_value()
                     dealer_hand_value = self.dealer_hand.get_value()
-
-                    print("Final Results")
-                    print("Your hand:", player_hand_value)
-                    print("Dealer's hand:", dealer_hand_value)
+                    
+                    print()
+                    print("Game Over!!")
+                    print('Results:')
+                    print("Your hand value:", player_hand_value)
+                    print("Dealer's hand value:", dealer_hand_value)
 
                     if player_hand_value > dealer_hand_value:
                         print("You Win!")
@@ -134,6 +143,7 @@ class Game:
             while again.lower() not in ["y", "n"]:
                 again = input("Please enter Y or N ")
             if again.lower() == "n":
+                print()
                 print("Thanks for playing!")
                 playing = False
             else:
@@ -161,4 +171,4 @@ class Game:
             print("Dealer has blackjack! Dealer wins!")
             
 if __name__ == '__main__':
-    g = Game()
+    game = Game()
